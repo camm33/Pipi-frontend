@@ -1,0 +1,169 @@
+.detalle-prenda-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f7ecd2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 80px;
+}
+
+.detalle-prenda-titulo {
+  background: #b89b5e;
+  color: #222;
+  font-family: "League Gothic", sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 10px 0 8px 0;
+  width: 60vw;
+  max-width: 500px;
+  margin: 40px auto 24px auto;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.detalle-prenda-info {
+  width: 90vw;
+  max-width: 1200px;
+  background: #f7ecd2;
+  border-radius: 18px;
+
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+  margin-bottom: 30px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.detalle-prenda-fotos {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 340px;
+  max-width: 340px;
+  background: transparent;
+}
+
+.detalle-prenda-foto {
+  width: 220px;
+  height: 220px;
+  border: 2.5px dashed #b2935b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  background: #b2935b;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 1px 6px #0002;
+}
+
+.detalle-prenda-datos {
+  flex: 1.5;
+  background: transparent;
+  padding: 20px 0 20px 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: flex-start;
+  min-width: 320px;
+  max-width: 500px;
+  box-shadow: none;
+}
+
+.detalle-prenda-label {
+  font-family: "Libre Baskerville", serif;
+  color: #48392e;
+  font-weight: bold;
+  margin-bottom: 2px;
+  font-size: 0.98rem;
+}
+
+.detalle-prenda-campo {
+  background: #b2935b;
+  border-radius: 8px;
+  padding: 7px 12px;
+  margin-bottom: 10px;
+  color: #222;
+  font-size: 0.98rem;
+  font-family: "Libre Baskerville", serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.detalle-prenda-publicador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.98rem;
+}
+
+.detalle-prenda-publicador-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #7c5e2c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+.detalle-prenda-publicador-btn:hover {
+  background: #b89b5e;
+  color: #48392e;
+}
+
+.detalle-prenda-tipo {
+  background: #b89b5e;
+  color: #222;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 1rem;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.detalle-prenda-estado {
+  font-size: 1.1rem;
+  color: #a07e44;
+  margin-bottom: 6px;
+}
+
+.detalle-prenda-descripcion {
+  font-size: 1.1rem;
+  color: #48392e;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 900px) {
+  .detalle-prenda-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .detalle-prenda-fotos {
+    min-width: unset;
+    max-width: unset;
+    grid-template-columns: 1fr 1fr;
+  }
+  .detalle-prenda-datos {
+    min-width: unset;
+    max-width: unset;
+    align-items: center;
+  }
+}

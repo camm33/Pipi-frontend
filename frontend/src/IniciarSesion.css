@@ -1,0 +1,346 @@
+/* ===== SeedProd Login Adaptation ===== */
+.login-seedprod-root {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #fff;
+}
+
+.login-seedprod-left {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* contenido pegado a la izquierda */
+  justify-content: flex-start; /* contenido desde arriba */
+  padding: 32px; /* un poco menos para acercar el logo a la esquina */
+  box-shadow: 2px 0 16px 0 rgba(0,0,0,0.04);
+  z-index: 2;
+}
+
+.login-seedprod-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.login-seedprod-logo img {
+  width: 72px;   /* más grande */
+  height: 72px;
+  border-radius: 50%; /* circular */
+  object-fit: cover;
+  margin-bottom: 12px;
+  align-self: flex-end; /* mueve el logo a la esquina derecha */
+  margin-left: auto;    /* asegura alineación a la derecha */
+}
+.seedprod-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #9A7738; /* título Double Π */
+  margin: 0 0 2px 0;
+  letter-spacing: 1.5px;
+}
+.seedprod-login {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 10px 0;
+}
+.seedprod-register {
+  font-size: 0.98rem;
+  color: #888;
+  margin-bottom: 0;
+}
+.seedprod-register a {
+  color: #9A7738; /* "Regístrate ahora" */
+  text-decoration: none;
+  font-weight: 500;
+}
+.seedprod-register a:hover {
+  color: #B08A43; /* un poco más claro al hover */
+  text-decoration: underline;
+}
+
+.seedprod-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.seedprod-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 4px;
+}
+.seedprod-input {
+  padding: 13px 16px;
+  border-radius: 6px;
+  border: 1.5px solid #e0e0e0;
+  background: #f9f9f9;
+  color: #222;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 8px;
+  transition: border 0.2s;
+}
+.seedprod-input:focus {
+  border: 1.5px solid #e67e22;
+  background: #fff;
+}
+.seedprod-remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.seedprod-remember {
+  font-size: 0.97rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.seedprod-forgot {
+  font-size: 0.97rem;
+  color: #9A7738; /* Forgot Your Password? */
+  text-decoration: none;
+}
+.seedprod-forgot:hover {
+  color: #B08A43; /* un poco más claro al hover */
+  text-decoration: underline;
+}
+.seedprod-message {
+  color: #c0392b;
+  background: #fff6f0;
+  border: 1px solid #f5c6a5;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  text-align: left;
+}
+.seedprod-login-btn {
+  margin-top: 8px;
+  padding: 13px 0;
+  border-radius: 6px;
+  border: none;
+  background-color: #9A7738; /* botón Log In */
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.seedprod-login-btn:hover {
+  background-color: #B08A43; /* hover más claro */
+}
+
+/* Panel derecho con ilustración y fondo */
+.login-seedprod-right {
+  flex: 1;
+  background: linear-gradient(135deg, #2d0b4e 0%, #ffb347 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 14px; /* evita que la imagen quede pegada bajo el header */
+}
+/* Carrusel del panel derecho */
+.login-carousel {
+  position: absolute;
+  inset: 0;             /* ocupa todo el panel derecho */
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+}
+.carousel-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* cubre todo sin deformarse */
+  object-position: center;
+  opacity: 0;
+  transition: opacity 700ms ease-in-out;
+}
+.carousel-image.active {
+  opacity: 1;
+}
+
+/* Zonas de borde con difuminado en arco para navegar */
+.carousel-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  z-index: 2;
+  cursor: pointer;
+}
+.carousel-edge.left { left: 0; }
+.carousel-edge.right { right: 0; }
+
+/* Usamos pseudo-elemento para transicionar la opacidad del difuminado */
+.carousel-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+.carousel-edge.left::after {
+  background: radial-gradient(120% 100% at 0% 50%, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.16) 38%, rgba(0,0,0,0) 72%);
+}
+.carousel-edge.right::after {
+  background: radial-gradient(120% 100% at 100% 50%, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.16) 38%, rgba(0,0,0,0) 72%);
+}
+.carousel-edge:hover::after {
+  opacity: 1;
+}
+
+/* Indicadores (dots) */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #ffffffbb;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.carousel-dot.active {
+  background: #9A7738; /* color de marca */
+  border-color: #9A7738;
+}
+
+@media (max-width: 900px) {
+  .login-seedprod-root {
+    flex-direction: column;
+  }
+  .login-seedprod-left {
+    max-width: 100vw;
+    min-width: unset;
+    box-shadow: none;
+    padding: 32px 12px;
+  }
+  .login-seedprod-right {
+    min-height: 220px;
+    padding: 24px 0;
+  }
+  .login-carousel {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .login-seedprod-root {
+    flex-direction: column;
+  }
+  .login-seedprod-left {
+    padding: 18px 4vw;
+  }
+  .login-seedprod-right {
+    min-height: 120px;
+    padding: 10px 0;
+  }
+  .login-carousel {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  width: 100%;
+  margin-bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* etiquetas e inputs a la izquierda */
+}
+
+.login-form label {
+  margin-bottom: 9px;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.75px;
+  text-align: left;
+  width: 100%;
+}
+
+.login-form input {
+  padding: 16px;
+  border-radius: 26px;
+  border: none;
+  background-color: #c49e6c;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+  text-align: left; /* texto dentro del input a la izquierda */
+}
+
+.login-form input::placeholder {
+  color: #f1e7d3;
+  font-size: 15px;
+  text-align: left;
+}
+
+/* ===== Enlaces ===== */
+.login-form a {
+  font-size: 14px;
+  color: #4b0082;
+  text-decoration: none;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Botones ===== */
+.login-form button {
+  margin-top: 19px;
+  padding: 16px;
+  border-radius: 26px;
+  border: none;
+  background-color: #6b4a2b;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.login-form button:hover {
+  background-color: #54351d;
+}
+
+/* ===== Texto debajo del botón ===== */
+.login-form .signup-text {
+  margin-top: 15px;   /* separación del botón Entrar */
+  font-size: 14px;
+  text-align: left;   /* alineado a la izquierda */
+  width: 100%;
+}

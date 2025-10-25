@@ -1,0 +1,180 @@
+.campo.valoracion {
+  background: transparent;
+  border-radius: 10px;
+  padding: 18px 12px 10px 12px;
+  margin-bottom: 18px;
+  color: #000;
+}
+/* Contenedor general */
+.container {
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e3d8b5;
+}
+
+/* Título */
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+  font-family: "league gothic"; 
+}
+
+/* Contenedor central dividido */
+.contenido-central {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* ---- FOTOS LADO IZQUIERDO ---- */
+.fotos-lado-izquierdo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.texto {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: "libre baskerville"; 
+}
+
+/* Cuadrícula de fotos 2x2, cuadros grandes */
+.fotos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 20px; /* espacio entre cuadros */
+  justify-content: center;
+}
+
+.foto-cuadro {
+  width: 220px;
+  height: 220px;
+  border: 2px dashed #b2935b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem; /* ícono más grande */
+  cursor: pointer;
+  background: #b2935b;
+  border-radius: 12px;
+  position: relative;
+}
+
+.upload-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ---- FORMULARIO LADO DERECHO ---- */
+.form-lado-derecho {
+  flex: 1;
+  background: #e3d8b5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.campo {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: "libre baskerville";
+}
+
+/* Inputs y textarea */
+input,
+textarea {
+  outline: none;
+  padding: 10px;
+  border: 1px solid #b2935b;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #b2935b;
+}
+
+/* Botones tipo de publicación */
+.tipo-publicacion {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.tipo-publicacion button {
+  padding: 10px 18px;
+  border: 1px solid #b2935b;
+  background: #b2935b;
+  color: #000;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+  font-family: "league gothic";
+  font-weight: 600;
+}
+
+.tipo-publicacion button:hover {
+  background: #48392e;
+}
+
+.tipo-publicacion button.active {
+  background: #48392e;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Estrellas de valoración */
+.valoracion .star {
+  font-size: 28px;
+  cursor: pointer;
+  color: #a07e44;
+  transition: 0.3s;
+}
+
+.valoracion .star.active {
+  color: #48392e;
+}
+
+/* Botón publicar */
+.btn-publicar {
+  width: 100%;
+  padding: 14px;
+  background: #a07e44;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: "league gothic"; 
+  transition: 0.3s;
+}
+
+.btn-publicar:hover {
+  background: #48392e;
+}
+

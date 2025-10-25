@@ -1,0 +1,210 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Libre Baskerville", "League Gothic", serif;
+  background-color: #f9f9f9;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* que ocupe toda la pantalla */
+}
+
+/* HEADER */
+.app-header {
+  background-color: #48392e; /* marrón oscuro */
+  text-align: left;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 4px 0;
+  align-items: flex-start;
+}
+
+.logo {
+  border-radius: 50%;
+  margin-left: 10px; 
+  width: 4%;
+}
+
+/* MAIN EN GRID */
+.app-main {
+  flex: 1;
+  background-color: #e3d8b5; 
+  padding: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 1fr; /* perfil a la izquierda, publicaciones a la derecha */
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* COLUMNA PERFIL */
+.perfil {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 2px solid #4b2e2e;
+  padding-right: 20px;
+}
+
+.foto-usuario {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.Marco {
+ width: 150px;     
+  height: 150px;     
+  background: transparent;
+  border-radius: 20px;
+  border: 3px solid #4f2d2e;
+  display: flex;            
+  align-items: center;     
+  justify-content: center;
+}
+
+/* --- ESTRELLAS DE VALORACIÓN --- */
+.stars {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.star {
+  font-size: 28px;
+  color: #ccc;            /* ⭐ color apagado */
+  cursor: pointer;
+  margin: 0 3px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.star:hover {
+  transform: scale(1.2);
+  color: #ffcc00;         /* ⭐ color al pasar el mouse */
+}
+
+.star.active {
+  color: #ff9900;         /* ⭐ color al seleccionar */
+}
+
+/* BOTÓN VALORACIÓN */
+.valoracion {
+  margin-top: 15px;
+  margin-left: 5px;
+  background-color: #4f2d2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.valoracion:hover {
+  background-color: #36221b;
+}
+
+.select {
+  background-color: white;
+  border-radius: 6px;
+  width: 50px;
+  margin-left: 5px;
+}
+
+/* DATOS PERFIL */
+.datos {
+  margin-top: 15px;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.datos h3 {
+  text-align: center;
+  margin-bottom: 8px;
+  border-top: 2px solid #4b2e2e;
+  padding-top: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.datos p {
+  margin-bottom: 6px;
+}
+
+.datos strong {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* COLUMNA PUBLICACIONES */
+.publicaciones {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.publicaciones h3 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* GALERÍA DE PUBLICACIONES */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* BOTÓN EDITAR PERFIL FLOTANTE */
+.editar-perfil-btn {
+  position: fixed;
+  bottom: 90px; /* un poco arriba del botón de flecha */
+  right: 30px;
+  padding: 6px 10px;
+  background-color: #7c5e2c;
+  color: white;
+  border: none;
+  border-radius: 6%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.editar-perfil-btn:hover {
+  background-color: #5a452b;
+}

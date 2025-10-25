@@ -1,0 +1,53 @@
+/* PublicHeader.css */
+.header-container {
+  width: 100%;
+  background-color: #48392e; /* marrón oscuro */
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap; /* evita que se divida en varias líneas */
+}
+
+.logo-img {
+  width: 50px;       /* ancho y alto iguales */
+  height: 50px;
+  object-fit: cover; /* asegura que la imagen llene el círculo */
+  border-radius: 50%; /* hace que sea circular */
+}
+
+.site-name {
+  font-weight: bold;
+  font-size: 20px;
+  white-space: nowrap; /* fuerza que "Double P" quede en una sola línea */
+  color: #9A7738; /* color solicitado para el texto al lado del logo */
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background-color: #b2935b;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000;
+  transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+  background-color: #a0804e;
+}
+

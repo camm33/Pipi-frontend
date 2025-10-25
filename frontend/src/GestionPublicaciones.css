@@ -1,0 +1,139 @@
+.editar-container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.editar-panel {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.editar-fotos {
+  flex: 1 1 280px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-content: flex-start;
+}
+
+.foto-preview {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e0e0e0;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.foto-preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.foto-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.foto-placeholder {
+  font-size: 0.85rem;
+  color: #888;
+  text-align: center;
+  padding: 10px;
+}
+
+.foto-preview input[type="file"] {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  opacity: 0.9;
+  width: calc(100% - 12px);
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.foto-preview input[type="file"]:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.editar-formulario {
+  flex: 2 1 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.editar-formulario h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #4b3f2f;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.editar-formulario input,
+.editar-formulario textarea,
+.editar-formulario select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.editar-formulario input:focus,
+.editar-formulario textarea:focus,
+.editar-formulario select:focus {
+  outline: none;
+  border-color: #b2935b;
+  box-shadow: 0 0 6px rgba(178, 147, 91, 0.5);
+}
+
+.editar-formulario textarea {
+  min-height: 100px;
+}
+
+.editar-botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btn-accion {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #b2935b, #a17c50);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-accion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #a17c50, #b2935b);
+}

@@ -1,0 +1,102 @@
+/* Toda la pantalla */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e6dbb8; /* 👈 mismo fondo del login */
+  font-family: "Poppins", sans-serif;
+  font-size: 110%; /* escala general */
+}
+
+.register-logo {
+  width: 66px;   /* 60px → +10% */
+  height: 66px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Main */
+.register-main {
+  flex: 1;
+  padding: 44px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.register-main h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.register-main p {
+  text-align: center;
+  margin-bottom: 33px;
+}
+
+/* Link “Iniciar Sesión” */
+.login-link {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 6px 14px;
+  background-color: #6b4423; /* 👈 marrón oscuro */
+  color: #000;
+  border-radius: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.login-link:hover {
+  background-color: #54351d; /* 👈 hover más oscuro */
+}
+
+/* Formulario */
+.register-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 44px;
+}
+
+.register-form label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 22px;
+  background-color: #c49e6c; /* 👈 mismo color de input login */
+  font-size: 15px;
+  outline: none;
+  color: #000; /* texto blanco como en login */
+}
+
+.register-form input::placeholder,
+.register-form select {
+  color: #000; /* 👈 placeholder beige claro */
+}
+
+/* Botón */
+.register-button {
+  grid-column: span 2;
+  justify-self: center;
+  padding: 13px 33px;
+  background-color: #6b4423; /*  marrón oscuro */
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  transition: 0.3s;
+}
+
+.register-button:hover {
+  background-color: #54351d; 
+}

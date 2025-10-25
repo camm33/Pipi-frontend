@@ -1,0 +1,34 @@
+13/09/25
+
+1. Toca que cambies la base de datos por la que voy a subir porque toco 
+hacer cambios pequeños
+
+2. los usuarios que estan en la base de datos no se pueden borrar porque
+estan relacionados con las publicaciones realizadas pero ya tampoco se puede inciar
+sesion con ellos ya que su contraseña no coincide con las encriptadas y
+te va a aparecer error en el login
+
+3. en comandos te deje otra libreria para descargar en backend ya que es
+para encriptar las contraseñas
+
+4. Cambie mas que nada los archivos de login.py e InicioSesion.js por las
+encriptaciones y el conteo regresivo del bloqueado
+
+5. falta colocar lo de los caracteres 
+
+6. poner bonito el detalles producto
+
+
+14/09/2025
+
+1. Cambiar la base de datos nuevamente ya que toco cambiar el orden de los
+los roles, 1 Admin 2 Usuario tambien por las nuevas consultas para admin
+
+2. Cuando te registres cambiar el rol con esta sentencia en sql
+UPDATE usuario
+SET id_rol = 1
+WHERE id_usuario = ;
+
+3. AdminDashboard.js solo es algo ahi para que inicie no tiene nada de estilos
+
+4. Faltaria ver como poner graficas y los reportes 

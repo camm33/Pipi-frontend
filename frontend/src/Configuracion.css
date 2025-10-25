@@ -1,0 +1,70 @@
+/* Aplica a todo el body */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* necesario para flex */
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal que ocupa toda la pantalla */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* altura completa de la pantalla */
+}
+
+/* Contenido principal: sidebar + contenido central */
+.main-content {
+  flex: 1; /* ocupa todo el espacio entre header y footer */
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar menú vertical que ocupa toda la altura */
+.configuracion-container {
+  width: 300px; /* ancho del menú */
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%; /* ocupa toda la altura de main-content */
+}
+
+/* Botones del menú */
+.configuracion-container button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.configuracion-container button:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Contenido principal al lado del menú */
+.contenido {
+  flex: 1; /* ocupa todo el espacio restante */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff8e1;
+  height: 100%;
+}
+
+/* Footer pegado al final */
+footer {
+  background-color: #4d3826;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}

@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #3e2e24;
+  color: #000;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  color: #000;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #d8c9aa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Menú */
+
+.sidebar .menu {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.menu-item {
+  background-color: #cdbb9d;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.menu-item:hover {
+  background-color: #bba988;
+}
+
+.menu-sub {
+  margin-top: 8px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sub-item {
+  padding: 6px 10px;
+  font-size: 13px;
+  background-color: #e8decb;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.sub-item:hover {
+  background-color: #d7c9b4;
+}
+
+/* Contenido principal */
+
+.dashboard-content {
+  flex-grow: 1;
+  background-color: #3e2e24;
+  padding: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-box {
+  background-color: #d8c9aa;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #3e2e24;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-report-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.chart-section,
+.report-section {
+  background-color: #d8c9aa;
+  padding: 20px;
+  border: 2px solid #3e2e24;
+  text-align: center;
+}
+
+.report-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #3e2e24;
+  font-size: 16px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chart-report-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+}
+
+
+.report-section {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #d8c9aa;
+  text-align: center; /* centra todo */
+  display: flex;
+  flex-direction: column; /* apila verticalmente */
+  align-items: center;
+}
+
+.report-title {
+  margin-bottom: 20px; /* espacio entre título y botones */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.report-list {
+  display: flex;
+  flex-direction: column; /* lista vertical */
+  gap: 12px; /* espacio entre botones */
+  width: 200px; /* ancho uniforme para todos los botones */
+}
+
+.report-btn {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #c19b6c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.report-btn:hover {
+  background-color: #c19b6c;
+}

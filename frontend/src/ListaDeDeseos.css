@@ -1,0 +1,128 @@
+.lista-deseos-main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  background: #fffbe8;
+  align-items: center;
+}
+
+.lista-deseos-titulo {
+  width: 60vw;
+  max-width: 500px;
+  margin: 30px auto 18px auto;
+  text-align: center;
+  background: #b89b5e;
+  color: #222;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  padding: 10px 0 8px 0;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.lista-deseos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lista-deseos-item {
+  flex: 1 1 320px;
+  max-width: 400px;
+  min-width: 280px;
+  background: #f7ecd2;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 12px;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.lista-deseos-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lista-deseos-info {
+  flex: 1;
+}
+
+.lista-deseos-nombre {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+.lista-deseos-precio {
+  color: #7c5e2c;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.lista-deseos-vermas {
+  background: #b89b5e;
+  color: #222;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 18px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.lista-deseos-corazon {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #b89b5e;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.2s;
+}
+.lista-deseos-corazon:hover {
+  color: #7c5e2c;
+}
+
+.lista-deseos-vacia {
+  width: 80vw;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: #7c5e2c;
+}
+
+.volver-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 6px 10px;
+  background: #7c5e2c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+  transition: background 0.2s, color 0.2s;
+}
+.volver-btn:hover {
+  background: #b89b5e;
+  color: #7c5e2c;
+}
+
+body {
+  background: #fffbe8;
+}

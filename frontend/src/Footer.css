@@ -1,0 +1,11 @@
+.footer-container {
+  width: 100vw;              /* ancho total de la ventana */
+  max-width: 100%;            /* asegura que no se restrinja */
+  background-color: #48392e;  /* marrón oscuro */
+  color: #000;                /* texto blanco */
+  font-family: "League Gothic", sans-serif;
+  padding: 20px 50px;         /* más padding vertical y horizontal */
+  text-align: center;         
+  box-sizing: border-box;     /* incluye padding en el ancho total */
+  font-size: 18px;            /* un poco más grande para destacar */
+}

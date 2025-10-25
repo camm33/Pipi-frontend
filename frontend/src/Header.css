@@ -1,0 +1,55 @@
+.header-container {
+  background-color: #48392e; /* marrón oscuro */
+  color: #000; /* texto negro */
+  font-family: "League Gothic", sans-serif;
+
+  /*min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5e6c5;
+  font-family: "Poppins", sans-serif;*/
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "League Gothic", sans-serif;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background-color: #b2935b;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+  background-color: #a0804e;
+}
