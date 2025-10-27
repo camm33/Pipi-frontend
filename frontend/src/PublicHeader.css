@@ -26,9 +26,12 @@
 
 .site-name {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
   white-space: nowrap; /* fuerza que "Double P" quede en una sola línea */
-  color: #9A7738; /* color solicitado para el texto al lado del logo */
+  color: #ffffff; /* color blanco para el texto al lado del logo */
+  font-family: 'Georgia', 'Palatino', 'Times New Roman', serif; /* tipografía elegante con serifa */
+  font-style: italic; /* cursiva */
+  letter-spacing: 0.5px;
 }
 
 .icons {

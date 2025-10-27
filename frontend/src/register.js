@@ -19,11 +19,33 @@ function Register() {
 
   const [mensaje, setMensaje] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [popEffect, setPopEffect] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
-      setFormData({ ...formData, [name]: files[0] });
+      const file = files[0];
+      setFormData({ ...formData, [name]: file });
+      
+      // Si es la foto de perfil, crear preview y activar efectos
+      if (name === "foto" && file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewImage(reader.result);
+          // Activar efecto pop
+          setPopEffect(true);
+          // Mostrar confetti
+          setShowConfetti(true);
+          
+          // Quitar el efecto pop después de la animación
+          setTimeout(() => setPopEffect(false), 600);
+          // Quitar el confetti después de la animación
+          setTimeout(() => setShowConfetti(false), 2000);
+        };
+        reader.readAsDataURL(file);
+      }
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -85,28 +107,64 @@ function Register() {
 
   return (
     <div className="register-page">
-      <main className="register-main">
-        <h2>Crea una cuenta nueva</h2>
-        <p>
-          ¿Ya te has registrado?{" "}
-          <Link to="/iniciar" className="login-link">
-            Iniciar Sesión
-          </Link>
-        </p>
+      {/* Panel izquierdo con imagen y texto */}
+      <div className="register-left-panel">
+        <div className="gold-bar"></div>
+        <div className="left-content">
+          <h1 className="welcome-text">
+            Eslogan
+          </h1>
+          <div className={`profile-circle ${popEffect ? 'pop-effect' : ''}`}>
+            <img 
+              src={previewImage || "/LOGO.png"} 
+              alt="Profile" 
+              className="profile-image" 
+            />
+            {showConfetti && (
+              <div className="confetti-container">
+                {[...Array(20)].map((_, i) => (
+                  <div key={i} className={`confetti confetti-${i % 5}`}></div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="decorative-circles">
+          <div className="circle circle-1"></div>
+          <div className="circle circle-2"></div>
+          <div className="circle circle-3"></div>
+        </div>
+      </div>
 
-        {mensaje && (
-          <p
-            style={{
-              textAlign: "center",
-              color: mensaje.includes("✅") ? "green" : "red",
-              fontWeight: "bold",
-            }}
-          >
-            {mensaje}
+      {/* Panel derecho con formulario */}
+      <div className="register-right-panel">
+        <div className="register-header">
+          <h2 className="logo-text">Double Π</h2>
+          <p className="signin-link">
+            ¿Ya te has registrado?{" "}
+            <Link to="/iniciar" className="login-link">
+              Iniciar Sesión
+            </Link>
           </p>
-        )}
+        </div>
 
-        <form className="register-form" onSubmit={handleSubmit}>
+        <main className="register-main">
+          <h2>Crea una cuenta nueva</h2>
+
+          {mensaje && (
+            <p
+              style={{
+                textAlign: "center",
+                color: mensaje.includes("✅") ? "green" : "red",
+                fontWeight: "bold",
+              }}
+            >
+              {mensaje}
+            </p>
+          )}
+
+          <div className="register-form-container">
+            <form className="register-form" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="primer_nombre">* Primer nombre</label>
             <input
@@ -243,7 +301,13 @@ function Register() {
             {isSubmitting ? "Registrando..." : "Registrarse"}
           </button>
         </form>
-      </main>
+        </div>
+
+        <div className="copyright">
+          Copyright © 2025 Company Co Ltd
+        </div>
+        </main>
+      </div>
     </div>
   );
 }
