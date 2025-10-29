@@ -1,11 +1,21 @@
-/*import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./Header.css";
 
 const Header = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [username, setUsername] = useState("");
   const [foto, setFoto] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Array con las rutas de navegación
+  const navItems = [
+    { path: "/catalogo", label: "Menú" },
+    { path: "/agregar", label: "Publicar" },
+    { path: "/lista_deseos", label: "Deseos" },
+    { path: "/configuracion", label: "Configuración" }
+  ];
 
   useEffect(() => {
     const nombreGuardado = localStorage.getItem("username");
@@ -14,6 +24,18 @@ const Header = ({ setIsLoggedIn }) => {
     if (nombreGuardado) setUsername(nombreGuardado);
     if (fotoGuardada) setFoto(fotoGuardada);
   }, []);
+
+  // Detectar página activa y actualizar índice de la barra
+  useEffect(() => {
+    const currentIndex = navItems.findIndex(item => 
+      location.pathname === item.path || 
+      (location.pathname === "/" && item.path === "/catalogo") ||
+      (location.pathname.includes("/detalle_prenda") && item.path === "/catalogo")
+    );
+    if (currentIndex !== -1) {
+      setActiveIndex(currentIndex);
+    }
+  }, [location.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -27,8 +49,41 @@ const Header = ({ setIsLoggedIn }) => {
 
   return (
     <header className="header-container">
+      {/* Logo */}
       <div className="logo">
-        <Link to="/MiPerfil">
+        <img
+          src="/LOGO.png"
+          alt="Double P Logo"
+          className="logo-img"
+        />
+        <span className="site-name">Double_P</span>
+      </div>
+
+      {/* Navegación central con barra deslizante */}
+      <nav className="nav-links">
+        {navItems.map((item, index) => (
+          <Link 
+            key={item.path} 
+            to={item.path} 
+            className={`nav-link ${activeIndex === index ? 'active' : ''}`}
+            onClick={() => setActiveIndex(index)}
+          >
+            {item.label}
+          </Link>
+        ))}
+        {/* Barra deslizante */}
+        <div 
+          className={`sliding-bar ${navItems[activeIndex].label.toLowerCase().replace('ó', 'o')}`}
+          style={{
+            transform: `translateX(${activeIndex * 100 - 18}%)`
+          }}
+        />
+      </nav>
+
+      {/* Usuario */}
+      <div className="user-section">
+        <span className="username">{username}</span>
+        <Link to="/MiPerfil" className="profile-link">
           {foto ? (
             <img
               src={`http://localhost:5000/uploads/${foto}`}
@@ -36,106 +91,14 @@ const Header = ({ setIsLoggedIn }) => {
               className="profile-pic"
             />
           ) : (
-            <span className="profile-placeholder">👤</span>
-          )}
-        </Link>
-
-        <span className="username">{username || "Usuario"}</span>
-      </div>
-
-      <div className="icons">
-        <Link to="/agregar">
-          <button className="icon-btn" title="Agregar prenda">
-            ➕ 
-          </button>
-        </Link>
-
-        <Link to="/lista_deseos">
-          <button className="icon-btn" title="Lista de Deseos">
-            🪄
-          </button>
-        </Link>
-
-        <button className="icon-btn" title="Configuración">
-          ⚙️
-        </button>
-
-        <button className="icon-btn" title="Cerrar Sesión" onClick={handleLogout}>
-          Cerrar Sesión
-        </button>
-      </div>
-    </header>
-  );
-};
-
-export default Header;*/
-
-import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import "./Header.css";
-
-const Header = ({ setIsLoggedIn }) => {
-  const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [foto, setFoto] = useState("");
-
-  useEffect(() => {
-    const nombreGuardado = localStorage.getItem("username");
-    const fotoGuardada = localStorage.getItem("foto_usuario");
-
-    if (nombreGuardado) setUsername(nombreGuardado);
-    if (fotoGuardada) setFoto(fotoGuardada);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("id_usuario");
-    localStorage.removeItem("username");
-    localStorage.removeItem("foto_usuario");
-
-    setIsLoggedIn(false);
-    navigate("/");
-  };
-
-  return (
-    <header className="header-container">
-      <div className="logo">
-        <Link to="/MiPerfil">
-          {foto ? (
             <img
-            src={`http://localhost:5000/uploads/${foto}`}
-            alt="Perfil"
-            className="profile-pic"
-          />
-
-          ) : (
-            <span className="profile-placeholder">👤</span>
+              src="/LOGO.png"
+              alt="Default Profile"
+              className="profile-pic default-profile"
+            />
           )}
         </Link>
-
-        <span className="username">{username || "Usuario"}</span>
-      </div>
-
-      <div className="icons">
-        <Link to="/agregar">
-          <button className="icon-btn" title="Agregar prenda">
-            ➕
-          </button>
-        </Link>
-
-        <Link to="/lista_deseos">
-          <button className="icon-btn" title="Lista de Deseos">
-            🪄
-          </button>
-        </Link>
-
-        <Link to="/configuracion">
-          <button className="icon-btn" title="Configuración">
-            ⚙️
-          </button>
-        </Link>
-
-        <button className="icon-btn" title="Cerrar Sesión" onClick={handleLogout}>
+        <button className="logout-btn" onClick={handleLogout}>
           Cerrar Sesión
         </button>
       </div>

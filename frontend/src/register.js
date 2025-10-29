@@ -304,7 +304,7 @@ function Register() {
         </div>
 
         <div className="copyright">
-          Copyright © 2025 Company Co Ltd
+          Copyright © Doble P
         </div>
         </main>
       </div>

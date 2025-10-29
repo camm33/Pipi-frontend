@@ -5,23 +5,28 @@ import "./PublicHeader.css";
 const PublicHeader = () => {
   return (
     <header className="header-container">
-      {/* Logo y nombre de la empresa */}
+      {/* Logo */}
       <div className="logo">
         <img
-          src="/LOGO.png" // logo
+          src="/LOGO.png"
           alt="Double P Logo"
           className="logo-img"
         />
         <span className="site-name">Double_P</span>
       </div>
 
-      {/* Botones de navegación */}
-      <div className="icons">
+      {/* Navegación central */}
+      <nav className="nav-links">
+        <Link to="/" className="nav-link">Menú</Link>
+        <a href="#about" className="nav-link">Acerca de</a>
+        <a href="#contact" className="nav-link">Contacto</a>
+        <a href="#projects" className="nav-link">Proyectos</a>
+      </nav>
+
+      {/* Botón iniciar sesión */}
+      <div className="auth-section">
         <Link to="/iniciar">
-          <button className="icon-btn">Iniciar sesión</button>
-        </Link>
-        <Link to="/register">
-          <button className="icon-btn">Registrarse</button>
+          <button className="login-btn">Iniciar sesión</button>
         </Link>
       </div>
     </header>

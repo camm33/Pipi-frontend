@@ -3,8 +3,7 @@ from flask_mail import Message
 import bcrypt
 import os
 from werkzeug.utils import secure_filename
-import pymysql
-from bd import obtener_conexion
+import MySQLdb.cursors
 import random
 import re
 
@@ -48,15 +47,11 @@ def register():
         if not re.match(r'[^@]+@[^@]+\.[^@]+', correo):
             return jsonify({"success": False, "mensaje": "⚠ Correo inválido"}), 400
 
-        from app import mail
-        conexion = obtener_conexion()
-        try:
-            with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
-                cursor.execute("SELECT * FROM usuario WHERE email=%s", (correo,))
-                if cursor.fetchone():
-                    return jsonify({"success": False, "mensaje": "⚠ El correo ya está registrado"}), 400
-        finally:
-            conexion.close()
+        from app import mysql, mail
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute("SELECT * FROM usuario WHERE email=%s", (correo,))
+        if cursor.fetchone():
+            return jsonify({"success": False, "mensaje": "⚠ El correo ya está registrado"}), 400
 
         token = str(random.randint(1000, 9999))
 
@@ -136,36 +131,34 @@ def verificar():
             if token_usuario != registro_temp.get("token"):
                 return jsonify({"success": False, "mensaje": "❌ Token inválido"}), 400
 
-            foto_nombre = registro_temp.get("foto") or 'default.jpg'
+            from app import mysql
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            foto_nombre = registro_temp.get("foto") if registro_temp.get("foto") else 'default.jpg'
+
             # Hashear la contraseña con bcrypt antes de guardar
             plain_pw = registro_temp.get("password", "") or ""
             hashed_pw = bcrypt.hashpw(plain_pw.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-            conexion = obtener_conexion()
-            try:
-                with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
-                    cursor.execute(
-                        """INSERT INTO usuario 
-                        (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, username, email, contrasena, talla, fecha_nacimiento, foto, id_rol)
-                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                        (
-                            registro_temp["primer_nombre"],
-                            registro_temp["segundo_nombre"],
-                            registro_temp["primer_apellido"],
-                            registro_temp["segundo_apellido"],
-                            registro_temp["username"],
-                            registro_temp["correo"],
-                            hashed_pw,
-                            registro_temp["talla"],
-                            registro_temp["fecha_nacimiento"],
-                            foto_nombre,
-                            2,
-                        ),
-                    )
-                conexion.commit()
-                session.pop("registro_temp", None)
-            finally:
-                conexion.close()
+            cursor.execute(
+                """INSERT INTO usuario 
+                (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, username, email, contrasena, talla, fecha_nacimiento, foto, id_rol)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                (
+                    registro_temp["primer_nombre"],
+                    registro_temp["segundo_nombre"],
+                    registro_temp["primer_apellido"],
+                    registro_temp["segundo_apellido"],
+                    registro_temp["username"],
+                    registro_temp["correo"],
+                    hashed_pw,
+                    registro_temp["talla"],
+                    registro_temp["fecha_nacimiento"],
+                    foto_nombre,
+                    2,
+                ),
+            )
+            mysql.connection.commit()
+            session.pop("registro_temp", None)
 
             return jsonify({"success": True, "mensaje": "✅ Cuenta verificada y registrada correctamente"}), 200
 
@@ -198,15 +191,11 @@ def login():
         usuario_input = data.get('usuario')
         password = data.get('password')
 
-        from app import mail
-        conexion = obtener_conexion()
-        try:
-            with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
-                # Buscar el usuario por email o username y verificar bcrypt en Python
-                cursor.execute("SELECT * FROM usuario WHERE email=%s OR username=%s", (usuario_input, usuario_input))
-                usuario = cursor.fetchone()
-        finally:
-            conexion.close()
+        from app import mysql, mail
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        # Buscar el usuario por email o username y verificar bcrypt en Python
+        cursor.execute("SELECT * FROM usuario WHERE email=%s OR username=%s", (usuario_input, usuario_input))
+        usuario = cursor.fetchone()
         if not usuario:
             return jsonify({"success": False, "mensaje": "⚠ Usuario o contraseña incorrectos"}), 400
 

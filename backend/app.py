@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 import os
+from flask_mysqldb import MySQL
 from flask_mail import Mail
 
 
@@ -39,20 +40,17 @@ def uploaded_file(filename):
 # Configuración MySQL
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "3107"
+app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "Double_P"
 
-# Nota: Este proyecto usa `pymysql` en `bd.py` para las conexiones a MySQL.
-# Eliminamos la dependencia a `flask_mysqldb` para evitar problemas de
-# instalación en Windows. Si prefieres usar `flask_mysqldb`, reinstala
-# ese paquete en tu entorno (requiere compilación).
+mysql = MySQL(app)
 
 # Configuración correo
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = "appdoublepp@gmail.com"
-app.config["MAIL_PASSWORD"] = "ioxr ehec lzvf lfpq"  # No tu clave normal, sino la App Password
+app.config["MAIL_PASSWORD"] = "ssun pbmt motb lmxx"
 app.config["MAIL_DEFAULT_SENDER"] = "appdoublepp@gmail.com"
 
 mail = Mail(app)
